@@ -1,9 +1,12 @@
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, Container } from '@chakra-ui/react'
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider>
-      <Component {...pageProps} />
+      <Container maxWidth='95%' paddingInline={0}>
+        <Component {...pageProps} />
+      </Container>
     </ChakraProvider>
   )
 }
