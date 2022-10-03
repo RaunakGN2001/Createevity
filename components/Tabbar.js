@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 
 const handleOnSearch = (searchQuery) => {
-    console.log(searchQuery);
+    // console.log(searchQuery);
 }
 
 const Tab = (props) => {
@@ -32,7 +32,7 @@ const Tabbar = (props) => {
 
     const router = useRouter();
 
-    console.log(props)
+    // console.log(props)
 
     const categoryArrayMod = props.categoriesArray.map((category) => {
         return <Tab key={category.id} category={category.attributes} />
