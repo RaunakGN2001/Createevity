@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Tabbar from "../components/Tabbar";
 import { fetchArticles, fetchCategories } from "../http";
+import qs from 'qs';
 
 
 export async function getServerSideProps(context) {
@@ -14,8 +15,9 @@ export async function getServerSideProps(context) {
     sort: ['id:desc'],
   };
 
+  const queryString = qs.stringify(options);
   // fetch articles
-  const dataArticle = await fetchArticles();
+  const dataArticle = await fetchArticles(queryString);
 
 
   // fetch categories
@@ -23,7 +25,7 @@ export async function getServerSideProps(context) {
 
   // console.log(dataCategory.data.data);
 
-  console.log(dataArticle.data.data);
+  console.log(queryString);
 
   return {
     props: {
