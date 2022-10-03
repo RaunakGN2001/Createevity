@@ -3,11 +3,25 @@ import { Search2Icon } from '@chakra-ui/icons'
 import React from 'react'
 import { useRouter } from 'next/router'
 
+
+
+const handleOnSearch = (searchQuery) => {
+    console.log(searchQuery);
+}
+
 const Tab = (props) => {
 
-    console.log(props);
+    var routerTab = useRouter();
+
+    // console.log(props)
+
+    const isActiveLink = (props) => {
+        // console.log(props.Slug)
+        return props.category.Slug === routerTab.query.category;
+    }
+
     return (
-        <Text fontWeight='medium' _hover={{color:'black', cursor:'pointer'}} _active={{color:'black'}} color='gray.500' background='none' paddingBottom='2px' marginRight='1.5rem'><Link _hover={{textDecoration:'none'}} href='#'>{props.Title}</Link></Text>
+        <Text borderBottom={isActiveLink(props) ? '2px solid black' : 'none'} fontWeight='medium' _hover={{color:'black', cursor:'pointer'}} _active={{color:'black'}} color='gray.500' background='none' paddingBottom='2px' marginRight='1.5rem'><Link href={`/category/${props.category.Slug}`} _hover={{textDecoration:'none'}} >{props.category.Title}</Link></Text>
     )
 }
 
@@ -18,9 +32,10 @@ const Tabbar = (props) => {
 
     const router = useRouter();
 
+    console.log(props)
 
     const categoryArrayMod = props.categoriesArray.map((category) => {
-        return <Tab Title={category.attributes.Title} />
+        return <Tab key={category.id} category={category.attributes} />
     })
 
   return (
@@ -35,7 +50,8 @@ const Tabbar = (props) => {
                 <InputGroup>
                     <InputLeftElement pointerEvents='none'
                     children={<Search2Icon />} />
-                    <Input placeholder='Search' width='auto' border='none' />
+                    <Input onChange={(e) => handleOnSearch(e.target.value)}
+                    type='text' placeholder='Search' width='auto' border='none' />
                 </InputGroup>
             </Box>
         </Box>
