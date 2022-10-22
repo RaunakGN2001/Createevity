@@ -4,11 +4,6 @@ import React from 'react'
 import { useRouter } from 'next/router'
 
 
-
-const handleOnSearch = (searchQuery) => {
-    // console.log(searchQuery);
-}
-
 const Tab = (props) => {
 
     var routerTab = useRouter();
@@ -42,6 +37,9 @@ const Tabbar = (props) => {
     })
 
 
+
+
+
   return (
 
     <>  
@@ -54,7 +52,7 @@ const Tabbar = (props) => {
                 <InputGroup>
                     <InputLeftElement pointerEvents='none'
                     children={<Search2Icon />} />
-                    <Input onChange={(e) => handleOnSearch(e.target.value)}
+                    <Input onChange={(e) => props.handleOnSearch(e.target.value)}
                     type='text' placeholder='Search' width='auto' border='none' />
                 </InputGroup>
             </Box>

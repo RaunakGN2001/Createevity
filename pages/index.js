@@ -7,9 +7,12 @@ import { fetchArticles, fetchCategories } from "../http";
 import qs from 'qs';
 import Head from "next/head";
 import Pagination from "../components/Pagination";
+import useRouter from "next/router";
 
 
 export async function getServerSideProps( {query} ) {
+
+ 
 
 
   const options = {
@@ -20,6 +23,15 @@ export async function getServerSideProps( {query} ) {
       pageSize: 4
     }
   };
+
+
+  if(query.search) {
+    options.filters = {
+      Title: {
+        $containsi: query.search,
+      }
+    }
+  }
 
   const queryString = qs.stringify(options);
   // fetch articles
@@ -50,7 +62,15 @@ export async function getServerSideProps( {query} ) {
 
 export default function Home({ categories, articles }) {
 
+  const router = useRouter;
+
+
   const { page,pageCount } = articles.pagination;
+
+
+  const handleSearch = (query) => {
+    router.push(`/?search=${query}`)
+  }
 
   return (
     <div>
@@ -62,7 +82,7 @@ export default function Home({ categories, articles }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Tabbar categoriesArray={categories.items} />
+      <Tabbar categoriesArray={categories.items} handleOnSearch={handleSearch} />
       <ArticleList articlesArray={articles.items} />
       <Pagination page={page} pageCount={pageCount} />
     </div>
