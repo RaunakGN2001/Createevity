@@ -31,7 +31,7 @@ const Category = ({categories, articles, slug}) => {
   const {category} = router.query;
 
   const handleSearch = (query) => {
-    router.push(`/category/${category}?search=${query}`)
+    router.push(`/category/${category}/?search=${query}`)
   }
 
 
@@ -68,6 +68,15 @@ export async function getServerSideProps({query}) {
     }
   };
 
+
+  if(query.search) { 
+    options.filters = {
+      ...options.filters,
+      Title: {
+        $containsi: query.search,
+      }
+    }
+  };
 
   const queryString = qs.stringify(options);
 
