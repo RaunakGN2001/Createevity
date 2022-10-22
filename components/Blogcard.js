@@ -14,7 +14,7 @@ const Blogcard = (props) => {
 
     // console.log(process.env.NEXT_PUBLIC_API_BASE_URL);
     // console.log(props.article.attributes.author.data.attributes.firstname);
-    console.log(props.article.attributes.body);
+    // console.log(props.article.attributes.body);
 
     // console.log(props.article.attributes.author.data.attributes.avatar.data.attributes.formats.thumbnail.url);
 

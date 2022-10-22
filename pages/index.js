@@ -9,12 +9,16 @@ import Head from "next/head";
 import Pagination from "../components/Pagination";
 
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps( {query} ) {
 
 
   const options = {
     populate: ['author.avatar'],
     sort: ['id:desc'],
+    pagination: {
+      page: query.page ? query.page : 1,
+      pageSize: 4
+    }
   };
 
   const queryString = qs.stringify(options);

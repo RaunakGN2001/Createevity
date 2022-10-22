@@ -1,10 +1,11 @@
 import { Box, Text } from '@chakra-ui/react'
 import Head from 'next/head'
-import { Router, useRouter } from 'next/router';
+import  { useRouter } from 'next/router';
 import qs from 'qs';
 
 import React from 'react'
 import ArticleList from '../../components/ArticleList';
+import Pagination from '../../components/Pagination';
 import Tabbar from '../../components/Tabbar';
 import { fetchArticles, fetchCategories } from '../../http';
 
@@ -22,6 +23,12 @@ const Category = ({categories, articles, slug}) => {
     return slugMod;
   };
 
+  const { page,pageCount } = articles.pagination;
+
+  const router = useRouter();
+  const {category} = router.query;
+
+  // console.log(category);
 
   return (
     <>
@@ -32,6 +39,7 @@ const Category = ({categories, articles, slug}) => {
       </Head>
       <Tabbar categoriesArray={categories.items}/>
       <ArticleList articlesArray={articles.items} />
+      <Pagination page={page} pageCount={pageCount} redirectURL={`/category/${category}`} />
     </>
   )
 }
@@ -46,6 +54,10 @@ export async function getServerSideProps({query}) {
       category: {
         slug: query.category,
       },
+    },
+    pagination: {
+      page: query.page ? query.page : 1,
+      pageSize: 4
     }
   };
 

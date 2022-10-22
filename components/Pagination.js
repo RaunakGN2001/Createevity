@@ -1,8 +1,12 @@
 import { Box, Button } from '@chakra-ui/react'
 import React from 'react'
+import qs from 'qs'
+import useRouter from 'next/router'
 
-const Pagination = ({page, pageCount}) => {
 
+const Pagination = ({page, pageCount, redirectURL = '/'}) => {
+
+  const router = useRouter
   const isNextDisabled = () => {
     return page >= pageCount;
   }
@@ -19,6 +23,14 @@ const Pagination = ({page, pageCount}) => {
     if(direction === -1 && isPrevDisabled()) {
       return;
     }
+
+
+    const queryString = qs.stringify({
+      ...router.query,
+      page: page + direction,
+    });
+
+    router.push(`${redirectURL}?${queryString}`);
 
   }
   return (
