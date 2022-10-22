@@ -4,17 +4,15 @@ import { Router, useRouter } from 'next/router';
 import qs from 'qs';
 
 import React from 'react'
+import ArticleList from '../../components/ArticleList';
 import Tabbar from '../../components/Tabbar';
 import { fetchArticles, fetchCategories } from '../../http';
 
-const Category = ({categories}) => {  
+const Category = ({categories, articles}) => {  
 
   const formattedCategory = () => {
     return 'Test Category';
   };
-
-  const router = useRouter()
-  console.log(router.query.category);
 
 
   return (
@@ -25,6 +23,7 @@ const Category = ({categories}) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Tabbar categoriesArray={categories.items}/>
+      <ArticleList articlesArray={articles.items} />
     </>
   )
 }
@@ -47,7 +46,6 @@ export async function getServerSideProps({query}) {
 
   const dataArticle = await fetchArticles(queryString);
 
-  console.log(dataArticle);
 
   const dataCategory = await fetchCategories();
 
@@ -57,6 +55,11 @@ export async function getServerSideProps({query}) {
         items: dataCategory.data.data,
         pagination: dataCategory.data.meta.pagination
       },
+      articles : {
+        items: dataArticle.data.data,
+        pagination: dataArticle.data.meta.pagination,
+      }
+      
     }
   }
 
