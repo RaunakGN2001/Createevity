@@ -25,7 +25,7 @@ export async function getServerSideProps(context) {
 
   // console.log(dataCategory.data.data);
 
-  console.log(queryString);
+  // console.log(queryString);
 
   return {
     props: {

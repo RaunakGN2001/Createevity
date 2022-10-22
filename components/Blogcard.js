@@ -32,7 +32,7 @@ const Blogcard = (props) => {
             </Box>
             <Box >
                 <Text color='gray.500'>
-                    {props.article.attributes.shortDescription}
+                    {props.article.attributes.shortDescription.slice(0,250)}{props.article.attributes.shortDescription.length > 250 ? '...' : ''}
                 </Text>
             </Box>
         </Box>
