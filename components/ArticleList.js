@@ -27,7 +27,7 @@ const ArticleList = (props) => {
     console.log(props.articlesArray);
     return (
         <>  
-            <Grid templateColumns='repeat(2, 1fr)' gap={10}>
+            <Grid templateColumns='repeat(2, 1fr)' columnGap='2rem'>
                 {articlesArrayMod}
             </Grid>
         </>

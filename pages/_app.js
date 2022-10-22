@@ -14,8 +14,8 @@ function MyApp({ Component, pageProps }) {
       <Container maxWidth='95%' paddingInline={0}>
         <Navbar />
         <Component {...pageProps} />
-        {/* <Footer /> */}
       </Container>
+      {/* <Footer /> */}
     </ChakraProvider>
   )
 }

@@ -22,7 +22,7 @@ const Blogcard = (props) => {
 
   return (
     <>
-        <Box padding='15px' marginTop='2rem' boxShadow='md' transition='200ms ease-in-out' backgroundColor='#F9F9F9' _hover={{cursor:'pointer', transform:'scale(1.01)'}}>
+        <Box padding='15px' marginTop='2rem' marginBottom='0' boxShadow='md' transition='200ms ease-in-out' backgroundColor='#F9F9F9' _hover={{cursor:'pointer', transform:'scale(1.01)'}}>
             <Text fontSize='25px' fontWeight='medium' marginBottom='1rem'>{props.article.attributes.Title}</Text>
             <Box display='flex' gap='7px' alignItems='center' marginBottom='1rem'>
                 <Image height={9} width={9} marginRight='8px' borderRadius='50%' src={`http://localhost:1337${props.article.attributes.author.data.attributes.avatar.data.attributes.formats.thumbnail.url}`} />

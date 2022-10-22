@@ -8,10 +8,18 @@ import ArticleList from '../../components/ArticleList';
 import Tabbar from '../../components/Tabbar';
 import { fetchArticles, fetchCategories } from '../../http';
 
-const Category = ({categories, articles}) => {  
+const Category = ({categories, articles, slug}) => {  
 
   const formattedCategory = () => {
-    return 'Test Category';
+
+    
+    var slugMod = slug[0].toUpperCase() + slug.slice(1,slug.length);
+    // console.log(slugMod);
+    for(let i = 0; i < slugMod.length; i++) {
+      if(slugMod[i] == '-') slugMod[i] = ' ';
+    }
+
+    return slugMod;
   };
 
 
@@ -58,7 +66,9 @@ export async function getServerSideProps({query}) {
       articles : {
         items: dataArticle.data.data,
         pagination: dataArticle.data.meta.pagination,
-      }
+      },
+
+      slug: query.category,
       
     }
   }
