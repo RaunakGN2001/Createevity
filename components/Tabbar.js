@@ -20,8 +20,11 @@ const Tab = (props) => {
         return props.category.Slug === routerTab.query.category;
     }
 
+
+    // console.log('test',routerTab.query.category);
+
     return (
-        <Text borderBottom={isActiveLink(props) ? '3px solid black' : 'none'} fontWeight='medium' _hover={{color:'black', cursor:'pointer'}} _active={{color:'black'}} color='gray.500' background='none' paddingTop='6px' paddingBottom='6px' marginRight='1.5rem'><Link href={`/category/${props.category.Slug}`} _hover={{textDecoration:'none'}} >{props.category.Title}</Link></Text>
+        <Text fontWeight='medium' borderBottom={isActiveLink(props) ? '3px solid black' : 'none'} color={routerTab.query.category === props.category.Title.toLowerCase() ? 'black' : 'gray.500' } _hover={{color:'black', cursor:'pointer'}} _active={{color:'black'}} background='none' paddingTop='6px' paddingBottom='6px' marginRight='1.5rem'><Link href={`/category/${props.category.Slug}`} _hover={{textDecoration:'none'}} >{props.category.Title}</Link></Text>
     )
 }
 
