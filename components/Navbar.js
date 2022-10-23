@@ -1,4 +1,4 @@
-import { Box, Button, Image } from '@chakra-ui/react'
+import { Box, Button, Image, Link } from '@chakra-ui/react'
 import React from 'react'
 
 const Navbar = () => {
@@ -6,7 +6,7 @@ const Navbar = () => {
     <>
         <Box display='flex' backgroundColor='white' justifyContent='space-between' alignItems='center' paddingTop={5} paddingBottom={5}> 
             <Image width='170px' src='/Createevity.png'/>
-            <Button background='none' fontSize='20px'>All Articles</Button>
+            <Button background='none' fontSize='20px'><Link href='/' _hover={{textDecoration:'none'}}>All Articles</Link></Button>
             <Box display='flex' gap='10px'>
                 <Button paddingInline='20px' background='none' fontSize='20px'>Login</Button>
                 <Button colorScheme='green' paddingInline='20px' fontSize='20px'>Sign up</Button>

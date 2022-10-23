@@ -30,6 +30,59 @@ a {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+
+.Markdown-wrapper {
+  font-size: 15pt;
+  margin-bottom: 10px;
+
+}
+
+.Markdown-wrapper  > ul {
+  /* outline: auto; */
+  padding-left: 1.5rem;
+  font-size: 15pt;
+  margin-bottom: 10px;
+
+}
+
+
+.Markdown-wrapper > h1 {
+  font-size: 35pt;
+  margin-bottom: 10px;
+}
+
+.Markdown-wrapper > h2 {
+  font-size: 30pt;
+  margin-bottom: 10px;
+}
+
+.Markdown-wrapper > h3 {
+  font-size: 26pt;
+  margin-bottom: 10px;
+}
+
+.Markdown-wrapper > h4 {
+  font-size: 22pt;
+  margin-bottom: 10px;
+}
+
+.Markdown-wrapper > p {
+  font-size: 15pt;
+  margin-bottom: 10px;
+
+}
+
+.Markdown-wrapper > pre {
+  font-size: 13pt;
+  margin-bottom: 10px;
+  background-color: rgb(240, 240, 240);
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: rgb(48, 48, 48);
+
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

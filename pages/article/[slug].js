@@ -3,6 +3,9 @@ import qs from 'qs'
 import { fetchArticleBySlug } from '../../http'
 import { Box, Image, Text } from '@chakra-ui/react'
 import Head from 'next/head'
+import serializeMarkdown from '../../utils/serializeMarkdown'
+import { MDXRemote } from 'next-mdx-remote'
+import { serialize } from 'next-mdx-remote/serialize'
 
 const slug = ({article, notFound=false}) => {
 
@@ -26,10 +29,11 @@ const slug = ({article, notFound=false}) => {
             <Text color='gray.500' fontSize='18px'>on {article.attributes.createdAt.slice(0,10)} at {article.attributes.createdAt.slice(11,16)}</Text>
         </Box>
         <Box marginTop='4rem'>
-            <Image className='articleImage' width='100%' src={`http://localhost:1337${article.attributes.Image.data.attributes.formats.large.url}`} />
-            <Text>
-                {article.attributes.body}
-            </Text>
+            <Image className='articleImage' width='100%' src={`http://localhost:1337${article.attributes.Image.data.attributes.formats.large.url}`} marginBottom='25px' />
+            
+            <div className='Markdown-wrapper'>
+                <MDXRemote {...article.attributes.body} />
+            </div>
         </Box>
         </Box>
         ) 
@@ -53,7 +57,13 @@ export const getServerSideProps = async ( {query} ) => {
 
     const articles = await fetchArticleBySlug(queryString); 
 
+    // console.table(articles.data.data)
 
+    const body = await serialize(articles.data.data[0].body)
+
+    console.log(body);
+
+    
     if(articles.data.data.length === 0) {
         return {
             notFound: true,
@@ -63,7 +73,8 @@ export const getServerSideProps = async ( {query} ) => {
     return {
         props: {
             // article: articles.data[0],
-            article: articles.data.data[0],
+            // article: articles.data.data[0],       
+            article: await serializeMarkdown(articles.data.data[0]),
         },
     }
 
