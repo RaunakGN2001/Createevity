@@ -1,4 +1,4 @@
-import { Box, Image, Text } from '@chakra-ui/react'
+import { Box, Image, Link, Text } from '@chakra-ui/react'
 import React from 'react'
 
 const Blogcard = (props) => {
@@ -22,21 +22,23 @@ const Blogcard = (props) => {
 
   return (
     <>
-        <Box padding='15px' marginTop='2rem' marginBottom='0' boxShadow='md' transition='200ms ease-in-out' backgroundColor='#F9F9F9' _hover={{cursor:'pointer', transform:'scale(1.01)'}}>
-            <Text fontSize='25px' fontWeight='medium' marginBottom='1rem'>{props.article.attributes.Title}</Text>
-            <Box display='flex' gap='7px' alignItems='center' marginBottom='1rem'>
-                <Image height={9} width={9} marginRight='8px' borderRadius='50%' src={`http://localhost:1337${props.article.attributes.author.data.attributes.avatar.data.attributes.formats.thumbnail.url}`} />
-                <Text fontSize='15px'>{props.article.attributes.author.data.attributes.firstname}{' '}
-                {props.article.attributes.author.data.attributes.lastname}</Text>
-                <Text fontSize='15px' color='gray.500'>on {date} at {time}</Text>
+            <Box padding='15px' marginTop='2rem' marginBottom='0' boxShadow='md' transition='200ms ease-in-out' backgroundColor='#F9F9F9' _hover={{cursor:'pointer', transform:'scale(1.01)'}}>
+                <Link _hover={{textDecoration:'none'}} href={`/article/${props.article.attributes.Slug}`} >
+                <Text fontSize='25px' fontWeight='medium' marginBottom='1rem'>{props.article.attributes.Title}</Text>
+                <Box display='flex' gap='7px' alignItems='center' marginBottom='1rem'>
+                    <Image height={9} width={9} marginRight='8px' borderRadius='50%' src={`http://localhost:1337${props.article.attributes.author.data.attributes.avatar.data.attributes.formats.thumbnail.url}`} />
+                    <Text fontSize='15px'>{props.article.attributes.author.data.attributes.firstname}{' '}
+                    {props.article.attributes.author.data.attributes.lastname}</Text>
+                    <Text fontSize='15px' color='gray.500'>on {date} at {time}</Text>
+                </Box>
+                <Box >
+                    <Text color='gray.500'>
+                        {props.article.attributes.shortDescription.slice(0,250)}{props.article.attributes.shortDescription.length > 250 ? '...' : ''}
+                    </Text>
+                </Box>
+                </Link>
             </Box>
-            <Box >
-                <Text color='gray.500'>
-                    {props.article.attributes.shortDescription.slice(0,250)}{props.article.attributes.shortDescription.length > 250 ? '...' : ''}
-                </Text>
-            </Box>
-        </Box>
-
+        
     </>
   )
 }
