@@ -26,7 +26,7 @@ const Blogcard = (props) => {
                 <Link _hover={{textDecoration:'none'}} href={`/article/${props.article.attributes.Slug}`} >
                 <Text fontSize='25px' fontWeight='medium' marginBottom='1rem'>{props.article.attributes.Title}</Text>
                 <Box display='flex' gap='7px' alignItems='center' marginBottom='1rem'>
-                    <Image height={9} width={9} marginRight='8px' borderRadius='50%' src={`http://localhost:1337${props.article.attributes.author.data.attributes.avatar.data.attributes.formats.thumbnail.url}`} />
+                    <Image height={9} width={9} marginRight='8px' borderRadius='50%' src={`https://createevity-backend.onrender.com${props.article.attributes.author.data.attributes.avatar.data.attributes.formats.thumbnail.url}`} />
                     <Text fontSize='15px'>{props.article.attributes.author.data.attributes.firstname}{' '}
                     {props.article.attributes.author.data.attributes.lastname}</Text>
                     <Text fontSize='15px' color='gray.500'>on {date} at {time}</Text>

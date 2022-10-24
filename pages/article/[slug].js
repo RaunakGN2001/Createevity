@@ -24,12 +24,12 @@ const slug = ({article, notFound=false}) => {
             {article.attributes.Title}
         </Text>
         <Box paddingLeft='15px' borderLeft='4px solid gray' background='linear-gradient(90deg, rgba(227,227,227,1) 10%, rgba(255,255,255,1) 100%)' display='flex' paddingTop='0.5rem' paddingBottom='0.5rem' marginTop='1rem' alignItems='center' gap='10px'>
-            <Image height='45px' width='48px' borderRadius='50%' src={`http://localhost:1337${article.attributes.author.data.attributes.avatar.data.attributes.formats.thumbnail.url}`} />
+            <Image height='45px' width='48px' borderRadius='50%' src={`https://createevity-backend.onrender.com${article.attributes.author.data.attributes.avatar.data.attributes.formats.thumbnail.url}`} />
             <Text fontSize='18px'>{article.attributes.author.data.attributes.firstname} {article.attributes.author.data.attributes.lastname}</Text>
             <Text color='gray.500' fontSize='18px'>on {article.attributes.createdAt.slice(0,10)} at {article.attributes.createdAt.slice(11,16)}</Text>
         </Box>
         <Box marginTop='4rem'>
-            <Image className='articleImage' width='100%' src={`http://localhost:1337${article.attributes.Image.data.attributes.formats.large.url}`} marginBottom='25px' />
+            <Image className='articleImage' width='100%' src={`https://createevity-backend.onrender.com${article.attributes.Image.data.attributes.formats.large.url}`} marginBottom='25px' />
             
             <div className='Markdown-wrapper'>
                 <MDXRemote {...article.attributes.body} />
