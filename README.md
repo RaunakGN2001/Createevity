@@ -1,6 +1,17 @@
 ## Description
 Createevity is a dynamic blog site that has been designed and developed using NextJs, Chakra-UI in the front-end and Strapi Headless CMS in the back-end.
 
+## Features
+- dynamic
+- built with Strapi Headless CMS
+- Strapi uses Sqlite as database
+- Strapi deployed on Render ( free tier )
+- Search bar available to quickly search for the desired blog
+- Pagination functionality has been provided
+- SEO-friendly article list initially fetched on server-side ( paginated - client-side )
+- categorisation of blogs as per user's choice
+- styling done using Chakra-UI
+
 ## Getting Started
 
 First, run the development server:
