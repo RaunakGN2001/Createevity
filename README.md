@@ -12,6 +12,16 @@ Createevity is a dynamic blog site that has been designed and developed using Ne
 - categorisation of blogs as per user's choice
 - styling done using Chakra-UI
 
+## Screenshots
+- Homepage
+
+  <img src="https://github.com/RaunakGN2001/Createevity/blob/095f18d470a5ac52bc07d4d343511921b268c91a/Screenshots/Homepage.png" />
+- Slugpage 
+
+  <img src="https://github.com/RaunakGN2001/Createevity/blob/095f18d470a5ac52bc07d4d343511921b268c91a/Screenshots/Slugpage.png" />
+- Markdown feature 
+
+  <img src="https://github.com/RaunakGN2001/Createevity/blob/095f18d470a5ac52bc07d4d343511921b268c91a/Screenshots/Markdown.png" />
 ## Getting Started
 
 First, run the development server:
