@@ -2,6 +2,11 @@ import { Box, Image, Link, Text } from '@chakra-ui/react'
 import React from 'react'
 
 const Blogcard = (props) => {
+    
+    
+    const testBackendLink = "http://localhost:1337" 
+    const deployedBackendLink = "https://createevity-backend-production.up.railway.app/"
+
 
     // 2022-10-02T06:45:04.703Z
     var dateAndTime = props.article.attributes.createdAt;
@@ -26,7 +31,7 @@ const Blogcard = (props) => {
                 <Link _hover={{textDecoration:'none'}} href={`/article/${props.article.attributes.Slug}`} >
                 <Text fontSize='25px' fontWeight='medium' marginBottom='1rem'>{props.article.attributes.Title}</Text>
                 <Box display='flex' gap='7px' alignItems='center' marginBottom='1rem'>
-                    <Image height={9} width={9} marginRight='8px' borderRadius='50%' src={`https://createevity-backend.onrender.com${props.article.attributes.author.data.attributes.avatar.data.attributes.formats.thumbnail.url}`} />
+                    <Image height={9} width={9} marginRight='8px' borderRadius='50%' src={`${deployedBackendLink}${props.article.attributes.author.data.attributes.avatar.data.attributes.formats.thumbnail.url}`} />
                     <Text fontSize='15px'>{props.article.attributes.author.data.attributes.firstname}{' '}
                     {props.article.attributes.author.data.attributes.lastname}</Text>
                     <Text fontSize='15px' color='gray.500'>on {date} at {time}</Text>
