@@ -5,7 +5,7 @@ const Blogcard = (props) => {
     
     
     const testBackendLink = "http://localhost:1337" 
-    const deployedBackendLink = "https://createevity-backend-production.up.railway.app/"
+    const deployedBackendLink = "https://createevity-backend-production.up.railway.app"
 
 
     // 2022-10-02T06:45:04.703Z
