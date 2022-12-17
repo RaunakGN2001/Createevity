@@ -10,7 +10,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 const slug = ({article, notFound=false}) => {
     
     const testBackendLink = "http://localhost:1337" 
-    const deployedBackendLink = "https://createevity-backend-production.up.railway.app/"
+    const deployedBackendLink = "https://createevity-backend-production.up.railway.app"
 
     console.log(article.attributes);
   return (
